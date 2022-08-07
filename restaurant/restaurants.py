@@ -51,7 +51,7 @@ def recommend(file, price, cuisines_list):
     # - a dict of {price: list of restaurant names}
     # - a dict of {cuisine: list of restaurant names}
     name_to_rating, price_to_names, cuisine_to_names = read_restaurants(file)
-    
+
     # Look for price or cuisines first?
     # Price: look up the list of restaurant names for the requested price.
     names_matching_price = price_to_names[price]
@@ -86,7 +86,7 @@ def build_rating_list(name_to_rating, names_final):
 
     for i in names_final:
         r.append([name_to_rating[i], i])
-    r.sort(reverse = True)
+    r.sort(reverse=True)
 
     return r
 
@@ -161,8 +161,8 @@ def read_restaurants(file):
         # a dict of {cuisine: list of restaurant names}
         cuisines = lines[i + 3].strip().split(',')
         for cuisine in cuisines:
-            if cuisine not in cuisine_to_names:                # if we haven't encountered this cuisine yet
-                cuisine_to_names[cuisine] = []                 # initialize a list inside the dictionary
-            cuisine_to_names[cuisine].append(lines[i].strip()) # before we append the restaurant
+            if cuisine not in cuisine_to_names:                 # if we haven't encountered this cuisine yet
+                cuisine_to_names[cuisine] = []                  # initialize a list inside the dictionary
+            cuisine_to_names[cuisine].append(lines[i].strip())  # before we append the restaurant
 
-    return (name_to_rating, price_to_names, cuisine_to_names)        
+    return name_to_rating, price_to_names, cuisine_to_names
